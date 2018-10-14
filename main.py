@@ -41,9 +41,10 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+    if event.message.text == '決断':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=os.environ.get('DECISION_LIFF_APP')))
 
 
 if __name__ == "__main__":
