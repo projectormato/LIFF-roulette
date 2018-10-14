@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return render_template('index.html')
 
 
 line_bot_api = LineBotApi(os.environ.get('ACCESS_TOKEN'))
