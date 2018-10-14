@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 flask = "==1.0.2"
+line-bot-sdk = "*"
 
 [requires]
 python_version = "3.6"
