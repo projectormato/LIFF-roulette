@@ -1,4 +1,6 @@
-from flask import Flask, request, abort, render_template
+from flask import Flask, request, abort, render_template, make_response
+from flask_bootstrap import Bootstrap
+import os, uuid, base64
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -9,13 +11,21 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-import os
+
+from PIL import Image
+import warnings
+warnings.simplefilter('error', Image.DecompressionBombWarning)
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 @app.route("/")
 def hello():
     return render_template('index.html')
+
+@app.route("/sketch")
+def sketch():
+    return render_template('sketch.html')
 
 
 line_bot_api = LineBotApi(os.environ.get('ACCESS_TOKEN'))

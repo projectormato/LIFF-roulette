@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 flask = "==1.0.2"
 line-bot-sdk = "*"
+gunicorn = "*"
+flask-bootstrap = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"
