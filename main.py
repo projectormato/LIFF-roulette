@@ -45,7 +45,10 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=os.environ.get('DECISION_LIFF_APP')))
-
+    elif event.message.text == 'お絵かき':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=os.environ.get('SKETCH_LIFF_APP')))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=int(os.environ.get("PORT",5000)))
