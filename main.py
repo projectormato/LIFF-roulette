@@ -74,7 +74,7 @@ def callback():
     return 'OK'
 
 
-# @handler.add(MessageEvent, message=TextMessage)
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == '決断':
         line_bot_api.reply_message(
