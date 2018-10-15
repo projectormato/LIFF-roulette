@@ -10,9 +10,9 @@
     var canvas = document.getElementById("cv");
     var ctx = canvas.getContext("2d");
     var text ="Hello World!"; //描画する文字
-    ctx.font = "italic 40px Arial"; //フォントにArial,40px,斜体を指定
-    ctx.fillStyle = "green"; //塗り潰し色を緑に
-    ctx.fillText(text,100,120); //テキストを塗り潰しで描画
+    ctx.font = "italic 60px Arial"; //フォントにArial,40px,斜体を指定
+    ctx.fillStyle = "black"; //塗り潰し色を緑に
+    ctx.fillText(text,75,100); //テキストを塗り潰しで描画
 
     $(window).on('load', function(){
       liff.init(function (data) {});
@@ -60,7 +60,7 @@
 
 {% block content %}
   <div class="container">
-    <canvas id="cv" width="360" height="240"></canvas>
+    <canvas id="cv" width="500" height="240" style="background-color:white;"></canvas>
     <button id="btn" type="button" class="btn btn-primary btn-block">Share</button>
   </div>
 {% endblock %}
