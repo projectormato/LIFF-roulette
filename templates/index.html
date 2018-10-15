@@ -9,6 +9,8 @@
   <script>
     var canvas = document.getElementById("cv");
     var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FFFFFF";//筆に白い絵の具をつけて
+    ctx.fillRect(0,0,500,250);//四角を描く
     var text ="Hello World!"; //描画する文字
     ctx.font = "italic 60px Arial"; //フォントにArial,40px,斜体を指定
     ctx.fillStyle = "black"; //塗り潰し色を緑に
@@ -60,7 +62,7 @@
 
 {% block content %}
   <div class="container">
-    <canvas id="cv" width="500" height="240" style="background-color:white;"></canvas>
+    <canvas id="cv" width="500" height="250"></canvas>
     <button id="btn" type="button" class="btn btn-primary btn-block">Share</button>
   </div>
 {% endblock %}
