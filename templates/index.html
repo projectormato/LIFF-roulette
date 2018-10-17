@@ -7,14 +7,15 @@
 {% block scripts %}
 {{super()}}
   <script>
+    var index = 1;
     var canvas = document.getElementById("cv");
     var ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#FFFFFF";//筆に白い絵の具をつけて
+    ctx.fillStyle = "white";//筆に白い絵の具をつけて
     ctx.fillRect(0,0,500,250);//四角を描く
     var text ="Hello World!"; //描画する文字
     ctx.font = "italic 60px Arial"; //フォントにArial,40px,斜体を指定
     ctx.fillStyle = "black"; //塗り潰し色を緑に
-    ctx.fillText(text,75,100); //テキストを塗り潰しで描画
+    ctx.fillText(text,75,150); //テキストを塗り潰しで描画
 
     $(window).on('load', function(){
       liff.init(function (data) {});
@@ -24,6 +25,15 @@
   <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
+    $('#add').on('click', function() {
+      var now = index-1;
+      $('#form-body' + now).after('<div class="row" id="form-body'+ index +'"></div>')
+      console.log('<div class="row" id="form-body'+ index +'"></div>');
+      $('#form-body'+index).append('<label for="choice'+ index +'">選択肢'+ (index+1) +　'</label>')
+      $('#form-body'+index).append('<input type="text" id="choice'+ index +'">')
+      index += 1;
+    });
+
     $('#btn').on('click', function() {
       $.ajax({
         type: 'POST',
@@ -61,8 +71,15 @@
 {% block title %}決断くん{% endblock %}
 
 {% block content %}
+  <div class="container" id="form">
+    <div class="row m-5" id="form-body0">
+      <label for="choice0">選択肢1</label>
+      <input type="text" id="choice0">
+    </div>
+    <button id="add" type="button" class="btn btn-info btn-block">選択肢追加</button>
+  </div>
   <div class="container">
     <canvas id="cv" width="500" height="250"></canvas>
-    <button id="btn" type="button" class="btn btn-primary btn-block">Share</button>
+    <button id="btn" type="button" class="btn btn-primary btn-block">決断！！</button>
   </div>
 {% endblock %}
