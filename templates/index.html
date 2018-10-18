@@ -25,12 +25,15 @@
     });
 
     $('#btn').on('click', function() {
+      var choice = []
+      for (var i = 0; i < index; i++) {
+        choice.push($('#choice' + i).val());
+      }
       var canvas = document.getElementById("cv");
       var ctx = canvas.getContext("2d");
       ctx.fillStyle = "white";//筆に白い絵の具をつけて
       ctx.fillRect(0,0,500,250);//四角を描く(背景を白にするため)
       var decide = Math.ceil(Math.random() * index)-1;
-      console.log(decide);
       var text = $('#choice'+decide).val();
       ctx.font = "italic 60px Arial";
       ctx.fillStyle = "black";
@@ -46,7 +49,7 @@
             liff.sendMessages([
               {
                 type: 'text',
-                text: '決断結果は...'
+                text: choice + 'からの決断結果は...'
               },
               {
                 type: 'image',
